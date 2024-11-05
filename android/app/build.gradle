@@ -51,6 +51,7 @@ react {
     // hermesFlags = ["-O", "-output-source-map"]
 
     /* Autolinking */
+    apply from: file("../../node_modules/react-native-vector-icons/fonts.gradle")
     autolinkLibrariesWithApp()
 }
 
