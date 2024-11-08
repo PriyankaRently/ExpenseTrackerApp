@@ -9,7 +9,8 @@ import Transaction from './src/components/Transaction';
 import Icon from 'react-native-vector-icons/Ionicons'
 import MainScreen from './src/components/MainScreen';
 import { TransactionContext, TransactionProvider } from './src/components/TransactionContext';
-import store from './src/components/store';
+import { store, persistor } from './src/components/store';
+import { PersistGate } from 'redux-persist/integration/react';
 import SpendFrequencyGraph from './src/components/TransactionGraph';
 import { Provider } from 'react-redux';
 function App() {
@@ -17,6 +18,7 @@ function App() {
   console.log("1");
   return (
     <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
   <NavigationContainer>
         <stack.Navigator>
       <stack.Screen name='Main' component={MainScreen}
@@ -28,6 +30,7 @@ function App() {
       </stack.Navigator>
 
   </NavigationContainer>
+  </PersistGate>
   </Provider>
   )
 }
